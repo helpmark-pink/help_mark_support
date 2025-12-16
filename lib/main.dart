@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'services/notification_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService().init();
+  await NotificationService().requestPermission();
   runApp(const HelpMarkSupportApp());
 }
 
@@ -18,28 +21,32 @@ class HelpMarkSupportApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
-          primary: Color(0xFFFDE047),
-          onPrimary: Color(0xFF422006),
-          secondary: Color(0xFFFACC15),
-          onSecondary: Color(0xFF422006),
-          error: Color(0xFFFCA5A5),
-          onError: Color(0xFF422006),
-          surface: Color(0xFFFFFEF0),
-          onSurface: Color(0xFF422006),
+          primary: Color(0xFFE8B4B8),
+          onPrimary: Color(0xFF5D4E4E),
+          secondary: Color(0xFFB8D4E3),
+          onSecondary: Color(0xFF4E5A5D),
+          tertiary: Color(0xFFD4E3B8),
+          onTertiary: Color(0xFF4E5D4E),
+          error: Color(0xFFE3B8B8),
+          onError: Color(0xFF5D4E4E),
+          surface: Color(0xFFFAF8F5),
+          onSurface: Color(0xFF5D4E4E),
         ),
-        scaffoldBackgroundColor: const Color(0xFFFFFEF0),
+        scaffoldBackgroundColor: const Color(0xFFFAF8F5),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFFDE047),
-          foregroundColor: Color(0xFF422006),
+          backgroundColor: Color(0xFFE8B4B8),
+          foregroundColor: Color(0xFF5D4E4E),
           elevation: 0,
           centerTitle: true,
         ),
         cardTheme: CardThemeData(
           color: Colors.white,
           elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color(0xFFE8B4B8),
+          foregroundColor: Color(0xFF5D4E4E),
         ),
       ),
       home: const HomeScreen(),

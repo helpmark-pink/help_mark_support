@@ -15,17 +15,23 @@ class HomeScreen extends StatelessWidget {
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('☀️ ', style: TextStyle(fontSize: 24)),
-            Text('ヘルプマークサポート'),
+            Icon(Icons.favorite, color: Colors.white, size: 22),
+            SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                'ヘルプマークサポート',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              // SOS ボタン
               Expanded(
                 flex: 2,
                 child: GestureDetector(
@@ -37,28 +43,28 @@ class HomeScreen extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFFCA5A5), Color(0xFFF87171)],
+                        colors: [Color(0xFFE8B4B8), Color(0xFFD4A4A8)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFFCA5A5).withOpacity(0.4),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
+                          color: const Color(0xFFE8B4B8).withOpacity(0.4),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
                         ),
                       ],
                     ),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('🆘', style: TextStyle(fontSize: 48)),
-                        SizedBox(height: 8),
+                        Icon(Icons.sos, size: 48, color: Colors.white),
+                        SizedBox(height: 6),
                         Text(
-                          '助けを呼ぶ',
+                          'たすけをよぶ',
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -68,24 +74,21 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 16),
-
-              // メニューグリッド
+              const SizedBox(height: 10),
               Expanded(
                 flex: 3,
                 child: GridView.count(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                   childAspectRatio: 1.3,
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     _buildMenuCard(
                       context,
-                      icon: Icons.message_rounded,
+                      icon: Icons.chat_bubble_rounded,
                       label: 'メッセージ',
-                      color: const Color(0xFFFDE047),
+                      color: const Color(0xFFB8D4E3),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const MessageScreen()),
@@ -93,9 +96,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     _buildMenuCard(
                       context,
-                      icon: Icons.person_rounded,
-                      label: 'マイ情報',
-                      color: const Color(0xFF86EFAC),
+                      icon: Icons.assignment_rounded,
+                      label: 'マイじょうほう',
+                      color: const Color(0xFFD4E3B8),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const MyInfoScreen()),
@@ -103,9 +106,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     _buildMenuCard(
                       context,
-                      icon: Icons.favorite_rounded,
-                      label: '体調記録',
-                      color: const Color(0xFFFDA4AF),
+                      icon: Icons.calendar_month_rounded,
+                      label: 'たいちょう',
+                      color: const Color(0xFFE3D4B8),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const HealthRecordScreen()),
@@ -115,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                       context,
                       icon: Icons.notifications_rounded,
                       label: 'リマインダー',
-                      color: const Color(0xFF93C5FD),
+                      color: const Color(0xFFD4B8E3),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const ReminderScreen()),
@@ -143,27 +146,29 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.3),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
+              color: color.withOpacity(0.4),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: const Color(0xFF422006)),
-            const SizedBox(height: 8),
+            Icon(icon, size: 36, color: Colors.white),
+            const SizedBox(height: 4),
             Text(
               label,
               style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF422006),
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF5D4E4E),
               ),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
